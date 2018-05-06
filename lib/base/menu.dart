@@ -28,8 +28,8 @@ class Menu {
   final String title;
   final IconData icon;
   final String routeName;
-  final String primaryColor;
-  final String secondaryColor;
+  final int primaryColor;
+  final int secondaryColor;
 }
 
 const List<Menu> menus = const <Menu>[
@@ -37,28 +37,28 @@ const List<Menu> menus = const <Menu>[
     title: 'フリー収支',
     icon: Icons.person,
     routeName: '/freeBalance',
-    primaryColor: '#00c8f8',
-    secondaryColor: '#008db1',
+    primaryColor: 0xFF00C8F8,
+    secondaryColor: 0xFF008DB1,
   ),
   const Menu(
     title: 'セット収支',
     icon: Icons.people,
     routeName: '/setBalance',
-    primaryColor: '#e93578',
-    secondaryColor: '#9c1f4d',
+    primaryColor: 0xFFE93578,
+    secondaryColor: 0xFF9C1F4D,
   ),
   const Menu(
     title: '大会',
     icon: Icons.group_add,
     routeName: '/tournament',
-    primaryColor: '#ffb253',
-    secondaryColor: '#d68227',
+    primaryColor: 0xFFFFB253,
+    secondaryColor: 0XFFD68227,
   ),
   const Menu(
     title: 'これまでの戦績',
     icon: Icons.timeline,
     routeName: '/history',
-    primaryColor: '#92d36e',
-    secondaryColor: '#629c44',
+    primaryColor: 0xFF92D36E,
+    secondaryColor: 0xFF629C44,
   ),
 ];

@@ -1,6 +1,55 @@
 import 'package:flutter/material.dart';
 
-class TitleSection extends StatelessWidget {
+import 'menu.dart';
+
+class TopBody extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new ListView(
+      children: [
+        topMenu(),
+        titleSection(),
+        buttonSection(),
+        textSection(),
+      ],
+    );
+  }
+}
+
+class topMenu extends StatelessWidget {
+  final Menu menu = menus[0];
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: const EdgeInsets.all(16.0),
+      child: new Card(
+        color: new Color(menu.primaryColor),
+        child: new Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            new ListTile(
+              leading: new Icon(
+                menu.icon,
+                size: 40.0,
+                color: Colors.white,
+              ),
+              title: new Text(
+                menu.title,
+                style: new TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24.0,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class titleSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -36,7 +85,7 @@ class TitleSection extends StatelessWidget {
   }
 }
 
-class ButtonSection extends StatelessWidget {
+class buttonSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Column buildButtonColumn(IconData icon, String label) {
@@ -75,7 +124,7 @@ class ButtonSection extends StatelessWidget {
   }
 }
 
-class TextSection extends StatelessWidget {
+class textSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
