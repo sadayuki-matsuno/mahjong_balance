@@ -1,19 +1,74 @@
 import 'package:flutter/material.dart';
 
+abstract class ListItem {}
+
 class MenuDrawer extends StatelessWidget {
+  final List<Widget> allDrawerItems = menus
+      .map(
+        (Menu menu) => new ListTile(
+              leading: new Icon(menu.icon),
+              title: new Text(menu.title),
+              onTap: () {
+                Navigator.of(context).pushNamed(menu.routeName);
+              },
+            ),
+      )
+      .toList();
+
   @override
   Widget build(BuildContext context) {
-    final List<Widget> allDrawerItems = menus.map((Menu menu) {
-      return new ListTile(
-        leading: new Icon(menu.icon),
-        title: new Text(menu.title),
-        onTap: () {
-          Navigator.of(context).pushNamed(menu.routeName);
-        },
-      );
-    }).toList();
     return new Drawer(
         child: new ListView(primary: true, children: allDrawerItems));
+  }
+}
+
+class MenuCard extends StatelessWidget {
+  final content = new Container(
+    child: new Column(
+        children: menus.map((Menu menu) {
+      return new Container(
+        padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+        child: new Card(
+          color: new Color(menu.primaryColor),
+          margin: const EdgeInsets.symmetric(vertical: 4.0),
+          elevation: 10.0,
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new ListTile(
+                leading: new Icon(
+                  menu.icon,
+                  size: 70.0,
+                  color: Colors.white,
+                ),
+                title: new Container(
+                  padding: const EdgeInsets.only(left: 48.0),
+                  child: new Text(
+                    menu.title,
+                    style: new TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28.0,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }).toList()),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return new ListView(
+      children: [
+        new Text("メニュー"),
+        content,
+      ],
+    );
   }
 }
 
